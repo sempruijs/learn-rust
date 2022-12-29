@@ -3,4 +3,5 @@
 members = [
     "guessing-game",
     "variables",
+    "functions"
 ]
