@@ -6,5 +6,7 @@ members = [
     "functions",
     "branches",
     "loops",
-    "ownership"
+    "ownership",
+    "borrowing",
+    "slice"
 ]
