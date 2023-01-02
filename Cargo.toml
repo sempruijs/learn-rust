@@ -8,5 +8,6 @@ members = [
     "loops",
     "ownership",
     "borrowing",
-    "slice"
+    "slice",
+    "structs"
 ]
