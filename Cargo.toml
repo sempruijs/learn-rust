@@ -10,5 +10,6 @@ members = [
     "borrowing",
     "slice",
     "structs",
-    "rectangles"
+    "rectangles",
+    "enums"
 ]
