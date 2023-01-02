@@ -9,5 +9,6 @@ members = [
     "ownership",
     "borrowing",
     "slice",
-    "structs"
+    "structs",
+    "rectangles"
 ]
