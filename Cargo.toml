@@ -11,5 +11,7 @@ members = [
     "slice",
     "structs",
     "rectangles",
-    "enums"
+    "enums",
+    "backyard",
+    "restaurant"
 ]
