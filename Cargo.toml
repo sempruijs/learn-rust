@@ -13,5 +13,6 @@ members = [
     "rectangles",
     "enums",
     "backyard",
-    "restaurant"
+    "restaurant",
+    "collections"
 ]
