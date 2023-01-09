@@ -9,6 +9,22 @@ fn main() {
     println!("the modus is {}", modus_of_numbers);
     println!("the average is {}", average_of_numbers);
     println!("the median is {}", median_of_numbers);
+
+    let message = String::from("test👀");
+    let pig_latin_message = pig_latin(&message);
+    print!("normal: {message} \n pig-latin: {pig_latin_message}");
+}
+
+fn pig_latin(s: &str) -> String {
+    let char_vec: Vec<char> = s.chars().collect();
+    let head = &char_vec[0];
+    let tail = &s[1..];
+    let end_word = match head {
+        'a' | 'e' | 'i' | 'o' => String::from("-hey"),
+        _ => format!("-{}ey", head),
+    };
+    let result = format!("{tail}{end_word}");
+    result
 }
 
 // median is the middle number in a list when sorted.
