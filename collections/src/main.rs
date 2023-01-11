@@ -13,6 +13,38 @@ fn main() {
     let message = String::from("test👀");
     let pig_latin_message = pig_latin(&message);
     print!("normal: {message} \n pig-latin: {pig_latin_message}");
+
+    let mut departments = Departments(HashMap::new());
+
+    departments.add_name_to_department(String::from("Sales"), String::from("John"));
+    departments.add_name_to_department(String::from("Sales"), String::from("Harko"));
+    departments.add_name_to_department(String::from("Sales"), String::from("Bert"));
+
+    dbg!(&departments);
+    // for (key, _value) in departments.0 {
+    //     print!("{:#?}", key);
+    // }
+}
+
+#[derive(Debug)]
+struct Departments(HashMap<String, Vec<String>>);
+
+impl Departments {
+    fn add_name_to_department(&mut self, department_name: String, name: String) {
+        self.0
+            .entry(department_name)
+            .or_insert(Vec::new())
+            .push(name);
+    }
+
+    // fn print(&self) {
+    //     for (department_name, name_vec) in &self.0 {
+    //         println!("{}\n", department_name);
+    //         for name in name_vec {
+    //             println!("{}", name);
+    //         }
+    //     }
+    // }
 }
 
 fn pig_latin(s: &str) -> String {
