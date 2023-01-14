@@ -14,5 +14,6 @@ members = [
     "enums",
     "backyard",
     "restaurant",
-    "collections"
+    "collections",
+    "errors"
 ]
