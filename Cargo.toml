@@ -15,5 +15,6 @@ members = [
     "backyard",
     "restaurant",
     "collections",
-    "errors"
+    "errors",
+    "generics"
 ]

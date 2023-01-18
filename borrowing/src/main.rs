@@ -19,3 +19,8 @@ fn get_length(s: &String) -> usize {
 fn add_sunshine(s: &mut String) {
     s.push_str("🌞")
 }
+
+fn test(bla: String) {
+    let mut x = 5;
+    println!("{}", x);
+}
