@@ -17,5 +17,6 @@ members = [
     "collections",
     "errors",
     "generics",
-    "adder"
+    "adder",
+    "minigrep"
 ]
