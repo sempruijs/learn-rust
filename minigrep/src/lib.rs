@@ -19,9 +19,39 @@ impl Config {
     }
 }
 
+pub fn search<'a>(querry: &str, contents: &'a str) -> Vec<&'a str> {
+    let mut result = Vec::new();
+
+    for line in contents.lines() {
+        if line.contains(querry) {
+            result.push(line);
+        }
+    }
+    result
+}
+
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(&config.file_path)?;
-    println!("file contents:\n{}", contents);
+
+    for line in search(&config.querry, &contents) {
+        println!("{}", line);
+    }
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn one_result() {
+        let querry = "fox";
+        let contents = "\
+the quick brown
+fox jumps over
+the lazy dog
+        ";
+        assert_eq!(vec!["fox jumps over"], search(querry, contents));
+    }
 }
