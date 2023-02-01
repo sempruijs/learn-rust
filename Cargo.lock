@@ -37,6 +37,10 @@ name = "errors"
 version = "0.1.0"
 
 [[package]]
+name = "functional"
+version = "0.1.0"
+
+[[package]]
 name = "functions"
 version = "0.1.0"
 
