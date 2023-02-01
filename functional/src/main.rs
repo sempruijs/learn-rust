@@ -1,17 +1,16 @@
 use std::thread;
 
 fn main() {
-    let square = |x| x * x;
-    let five_times_five = square(5);
-    println!("{}", five_times_five);
+    let v1 = vec![1, 4, 3];
 
-    let mut list = vec![1, 3, 2];
-    println!("{:?}", list);
-    let mut borrow_mut = || list.push(7);
-    borrow_mut();
-    println!("{:?}", list);
+    let v2: Vec<_> = v1.iter().map(|x| x + 1).collect();
 
-    thread::spawn(move || println!("from thread: {:?}", list))
-        .join()
-        .unwrap();
+    for num in v2 {
+        println!("{}", num);
+    }
+
+    let a = v1.iter().next().unwrap();
+    let b = v1.iter().next().unwrap();
+
+    println!("{}{}", a, b);
 }
