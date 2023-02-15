@@ -19,6 +19,10 @@ name = "branches"
 version = "0.1.0"
 
 [[package]]
+name = "cargo-features"
+version = "0.1.0"
+
+[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -130,6 +134,10 @@ version = "0.1.0"
 
 [[package]]
 name = "slice"
+version = "0.1.0"
+
+[[package]]
+name = "smart-pointer"
 version = "0.1.0"
 
 [[package]]

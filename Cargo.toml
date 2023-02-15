@@ -19,5 +19,7 @@ members = [
     "generics",
     "adder",
     "minigrep",
-    "functional"
+    "functional",
+    "cargo-features",
+    "smart-pointer"
 ]
