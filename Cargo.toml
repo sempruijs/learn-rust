@@ -21,5 +21,6 @@ members = [
     "minigrep",
     "functional",
     "cargo-features",
-    "smart-pointer"
+    "smart-pointer",
+    "concurrency"
 ]
