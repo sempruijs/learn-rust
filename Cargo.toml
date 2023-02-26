@@ -22,5 +22,6 @@ members = [
     "functional",
     "cargo-features",
     "smart-pointer",
-    "concurrency"
+    "concurrency",
+    "pattern-matching"
 ]
