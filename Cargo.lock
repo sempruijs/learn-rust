@@ -7,6 +7,10 @@ name = "adder"
 version = "0.1.0"
 
 [[package]]
+name = "advanced-features"
+version = "0.1.0"
+
+[[package]]
 name = "backyard"
 version = "0.1.0"
 
