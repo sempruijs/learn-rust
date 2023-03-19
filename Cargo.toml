@@ -24,5 +24,6 @@ members = [
     "smart-pointer",
     "concurrency",
     "pattern-matching",
-    "advanced-features"
+    "advanced-features",
+    "hello"
 ]
