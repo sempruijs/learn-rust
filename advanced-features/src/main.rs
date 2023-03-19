@@ -43,6 +43,9 @@ fn main() {
     println!("{}", c);
 
     c.outline_print();
+
+    let val = do_twice(add_one, 4);
+    println!("{}", val);
 }
 
 trait OutlinePrint: fmt::Display {
@@ -53,4 +56,12 @@ trait OutlinePrint: fmt::Display {
         println!("* {} *", input);
         println!("{}", "*".repeat(len + 4));
     }
+}
+
+fn add_one(x: i32) -> i32 {
+    x + 1
+}
+
+fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
+    f(arg) + f(arg)
 }
