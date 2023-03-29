@@ -3,31 +3,55 @@ use std::thread;
 
 pub struct ThreadPool {
     workers: Vec<Worker>,
-    sender: mpsc::Sender<Job>,
+    sender: Option<mpsc::Sender<Job>>,
 }
 
 type Job = Box<dyn FnOnce() + Send + 'static>;
 
 struct Worker {
     id: usize,
-    thread: thread::JoinHandle<()>,
+    thread: Option<thread::JoinHandle<()>>,
+}
+
+impl Drop for ThreadPool {
+    fn drop(&mut self) {
+        drop(self.sender.take());
+
+        for worker in &mut self.workers {
+            println!("shutting down {}", worker.id);
+
+            if let Some(thread) = worker.thread.take() {
+                thread.join().unwrap();
+            }
+        }
+    }
 }
 
 impl Worker {
     fn new(id: usize, reciver: Arc<Mutex<mpsc::Receiver<Job>>>) -> Self {
         let thread = thread::spawn(move || loop {
-            let job = reciver
+            let message = reciver
                 .lock()
                 .expect("problem with locking. Thread id: {id}")
-                .recv()
-                .unwrap();
+                .recv();
 
-            println!("thread with id {} has a job", id);
+            match message {
+                Ok(job) => {
+                    println!("thread with id {} has a job", id);
 
-            job();
+                    job();
+                }
+                Err(_) => {
+                    println!("Worker disconnected; Shutting down.");
+                    break;
+                }
+            }
         });
 
-        Self { id: id, thread }
+        Self {
+            id: id,
+            thread: Some(thread),
+        }
     }
 }
 
@@ -54,7 +78,10 @@ impl ThreadPool {
             workers.push(worker);
         }
 
-        ThreadPool { workers, sender }
+        ThreadPool {
+            workers,
+            sender: Some(sender),
+        }
     }
 
     pub fn execute<F>(&self, f: F)
@@ -62,6 +89,6 @@ impl ThreadPool {
         F: FnOnce() + Send + 'static,
     {
         let job = Box::new(f);
-        self.sender.send(job).unwrap();
+        self.sender.as_ref().unwrap().send(job).unwrap();
     }
 }

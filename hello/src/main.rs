@@ -1,3 +1,8 @@
+// basic multithreaded webserver
+//
+// to connect, open your browers and enter: 127.0.0.1:7878
+//
+// I followed the guide from chapter 20 of the rust book
 use std::{
     fs,
     io::{prelude::*, BufReader},
